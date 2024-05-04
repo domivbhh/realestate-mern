@@ -70,8 +70,6 @@ const Signup = () => {
         </Link>
       </div>
       <p className='text-red-700 mt-5'>{error && 'Something went Wrong!'}</p>
-
-
     </div>
   );
 }

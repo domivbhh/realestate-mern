@@ -1,6 +1,6 @@
 import React from 'react'
 import {GoogleAuthProvider, signInWithPopup,getAuth} from 'firebase/auth'
-import { app } from '../firebase';
+import { app } from '../firebase.js';
 import {useDispatch} from 'react-redux';
 import {signInSuccess} from '../redux/user/userSlice'
 import {useNavigate} from 'react-router-dom'
@@ -9,14 +9,17 @@ import {useNavigate} from 'react-router-dom'
 const OAuth = () => {
     const dispatch = useDispatch();
     const navigate=useNavigate()
-    const handleGoogleClick=async(req,res)=>{
+
+    const handleGoogleClick=async()=>{
         try {
             const provider=new GoogleAuthProvider();
             const auth=getAuth(app)
             const result=await signInWithPopup(auth,provider)
-            // console.log(result)
+            console.log(result)
             
-            const res=await fetch('api/auth/goggle',{
+            //backend kum anupura ggogle data va
+            
+            const res=await fetch('api/auth/google',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json',
@@ -27,14 +30,14 @@ const OAuth = () => {
                     photo:result.user.photoURL,
                 }),
             })
-
+                //simultaneousaa frontend kum anupura
             const data=await res.json();
             dispatch(signInSuccess(data));
             navigate('/')
 
         } 
         catch (error) {
-            console.log('could not login with google',error)    
+                console.log(error)
         }
     }
 
