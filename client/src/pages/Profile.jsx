@@ -4,6 +4,7 @@ import {getStorage, uploadBytesResumable,ref,getDownloadURL} from 'firebase/stor
 import { app } from '../firebase'
 import {useDispatch} from 'react-redux'
 import { updateUserFailure,updateUserStart,updateUserSuccess,deleteUserFailure,deleteUserStart,deleteUserSuccess,signOutUserSuccess } from '../redux/user/userSlice'
+import {Link} from 'react-router-dom'
 
 
 const Profile = () => {
@@ -135,7 +136,7 @@ const Profile = () => {
       <input type="text" id='password' placeholder='password' className='bg-slate-100 rounded-lg p-3' />
       
     <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80' disabled={user.loading}>{user.loading?'Loading...' : 'Update'}</button>
-    
+    <Link to='/create-listing' className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95'>Create Listing</Link>
     </form>      
     
     
@@ -145,6 +146,7 @@ const Profile = () => {
     </div>
     <p className='text-red-700 mt-5'>{user.error && 'Something went Wrong'}</p>
     <p className='text-green-700 mt-5'>{updateSuccess && 'User updated successfully'}</p>
+    
     </div>
   )
 }
