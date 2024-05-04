@@ -6,6 +6,7 @@ import {FaSearch} from 'react-icons/fa';
 const Header = () => {
   const currentUser=useSelector((state)=>state.user)
   // const{profilePicture}=currentUser.currentUser
+  console.log(currentUser)
   // console.log(username)
   return (
     <div className="bg-slate-200 ">

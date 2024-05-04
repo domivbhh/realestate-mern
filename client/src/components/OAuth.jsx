@@ -17,7 +17,7 @@ const OAuth = () => {
             const result=await signInWithPopup(auth,provider)
             console.log(result)
             
-            //backend kum anupura ggogle data va
+            //backend kum anupura google data va
             
             const res=await fetch('api/auth/google',{
                 method:'POST',
