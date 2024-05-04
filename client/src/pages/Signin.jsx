@@ -9,7 +9,7 @@ import OAuth from "../components/OAuth";
 
 export default function Signin() {
   const [formData, setFormData] = useState({});
-  const{loading,error}=useSelector((state)=>state.user)//name in the createSlice method
+  const user=useSelector((state)=>state.user)//name in the createSlice method
   const navigate=useNavigate()
   const dispatch=useDispatch()
 
@@ -17,7 +17,7 @@ export default function Signin() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // console.log(formData)
+  console.log(user)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,10 +70,10 @@ export default function Signin() {
           className="bg-slate-100 p-3 rounded-lg"
         />
         <button
-          disabled={loading}
+          disabled={user.loading}
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95"
         >
-          {loading ? "Loading" : "sign-in"}
+          {user.loading ? "Loading" : "sign-in"}
         </button>
         {/* <OAuth/> */}
       </form>
@@ -83,7 +83,7 @@ export default function Signin() {
           <span className="text-blue-700">Sign-up</span>
         </Link>
       </div>
-      <p className="text-red-700 mt-5"> {error ? error || "Something went Wrong!" :''}</p>
+      <p className="text-red-700 mt-5"> {user?.error ? error || "Something went Wrong!" :''}</p>
     </div>
   );
 }
