@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux'
 import {getStorage, uploadBytesResumable,ref,getDownloadURL} from 'firebase/storage'
 import { app } from '../firebase'
 import {useDispatch} from 'react-redux'
-import { updateUserFailure,updateUserStart,updateUserSuccess,deleteUserFailure,deleteUserStart,deleteUserSuccess,signOut } from '../redux/user/userSlice'
+import { updateUserFailure,updateUserStart,updateUserSuccess,deleteUserFailure,deleteUserStart,deleteUserSuccess,signOutUserSuccess } from '../redux/user/userSlice'
 
 
 const Profile = () => {
@@ -108,7 +108,7 @@ const Profile = () => {
   const handleSignOut=async()=>{
     try{
       await fetch('/api/auth/signout')
-      dispatch(signOut())
+      dispatch(signOutUserSuccess())
     }
     catch(err){
       console.log(err)

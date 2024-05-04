@@ -33,21 +33,18 @@ export default function Signin() {
       });
 
       const data = await res.json();
-      console.log(data)
       
       
       if (data.success === false) {
-        dispatch(signInFailure(data.error));
+        dispatch(signInFailure(data.message));
         return;
       }
 
       dispatch(signInSuccess(data));
       navigate('/')
-         
-      
-
-    } catch (err) {
-      dispatch(signInFailure(err))
+    } 
+    catch (err) {
+      dispatch(signInFailure(err.message))
     }
     
    
@@ -78,7 +75,7 @@ export default function Signin() {
         >
           {loading ? "Loading" : "sign-in"}
         </button>
-        <OAuth/>
+        {/* <OAuth/> */}
       </form>
       <div className="flex gap-2 mt-5">
         <p>No account?</p>
