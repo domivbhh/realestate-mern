@@ -100,8 +100,7 @@ const Profile = () => {
      dispatch(deleteUserSuccess()) 
     } 
     catch (error) {
-      dispatch(deleteUserFailure(error))
-      
+      dispatch(deleteUserFailure(error.message))
     }
   }
 
