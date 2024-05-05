@@ -1,6 +1,7 @@
 import {errorHandler} from '../utils/error.js';
 import bcryptjs from 'bcryptjs'
 import User from '../models/UserModel.js'
+import Listing from '../models/listingModel.js';
 
 export const getAllUser=(req,res)=>{
     res.send('Hello')
@@ -48,6 +49,40 @@ export const deleteUser=async (req,res,next)=>{
     next(err)
   }
 }
+
+
+// export const getUserListings=async(req,res,next)=>{
+
+//   if(req.user.id==req.params.id){
+//     try {
+//       const listings=await Listing.find({userRef:req.params.id})
+//       res.status(200).json(listings)
+      
+//     } 
+//     catch (error) {
+      
+//     }
+
+//   }
+//   else{
+//     return next(errorHandler(401,"You can View your ownl listings"))
+//   }
+
+// }
+
+export const getUserListings = async (req, res, next) => {
+  if (req.user.id === req.params.id) {
+    try {
+      const listings = await Listing.find({ userRef: req.params.id });
+      res.status(200).json(listings);
+    } catch (error) {
+      next(error);
+    }
+  } else {
+    return next(errorHandler(401, "You can only view your own listings!"));
+  }
+};
+
 
 
 
