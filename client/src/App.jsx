@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import CreateListing from "./pages/CreateListing";
 import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
+import Search from "./pages/Search";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search/>}/>
         <Route path="/about" element={<About />} />
         <Route path="/listing/:listingId" element={<Listing />} />
 
