@@ -13,13 +13,10 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URL).then(()=>(console.log('DB Connected Successfully'))).catch((err)=>console.log(err))
 const app=express()
 
-// const __dirname=path.resolve()
+const __dirname=path.resolve()
 
-// app.use(express.static(path.join(__dirname,'/client/dist')))
 
-// app.get('*',(req,res)=>{
-//     res.sendFile(path.join(__dirname,'client','dist','index.html'))
-// });
+
 
 
 
@@ -35,6 +32,13 @@ app.use(cookieParser())
 app.use('/api/user',userRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/listings',listingRoutes)
+
+app.use(express.static(path.join(__dirname,'/client/dist')))
+
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname,'client','dist','index.html'))
+});
+
 
 app.use((err,req,res,next)=>{
     const statusCode=err.statusCode || 500;
