@@ -61,7 +61,7 @@ const Signup = () => {
         <input onChange={handleChange} type='email' placeholder='email' id='email' className='bg-slate-100 p-3 rounded-lg'/>
         <input onChange={handleChange} type='password' placeholder='password' id='password' className='bg-slate-100 p-3 rounded-lg'/>
         <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95'>{loading ? 'Loading' : 'sign-up'}</button>
-        <OAuth/>
+{/*         <OAuth/> */}
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>
