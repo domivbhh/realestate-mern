@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch("https://realestate-api-rw9t.onrender.com/listings/get?offer=true&limit=4");
+        const res = await fetch("/api/listings/get?offer=true&limit=4");
         const data = await res.json();
         setOfferListings(data);
         fetchRentListings();
