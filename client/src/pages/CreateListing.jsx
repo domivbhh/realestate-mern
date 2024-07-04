@@ -132,7 +132,7 @@ export default function CreateListing() {
         return setError("Discount price must be lower than regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/listings/create", {
+      const res = await fetch("https://realestate-api-rw9t.onrender.com/listings/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
